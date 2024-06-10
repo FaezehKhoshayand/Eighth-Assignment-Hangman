@@ -17,26 +17,30 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-
-public class HangmanController {
+public class signUpController {
+    @FXML
+    private Button backBtn;
+    @FXML
+    private TextField nametxt;
 
     @FXML
-    private Button loginBtn;
+    private TextField passwordtxt;
 
     @FXML
-    private Button signupBtn;
+    private TextField usernametxt;
     @FXML
-    protected void onLoginBtnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load (getClass ().getResource ("login-view.fxml"));
+    protected void onBackBtnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load (getClass ().getResource ("hangman-view.fxml"));
         Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
-        window.setTitle("Login Menu");
         window.setScene (new Scene(parent, 600, 400));
     }
     @FXML
-   protected void onSignUpBtnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load (getClass ().getResource ("signUp-view.fxml"));
+    void onSubmitBtnClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass ().getResource ("mainMenu.fxml"));
         Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
-        window.setTitle("Sign-Up Menu");
         window.setScene (new Scene(parent, 600, 400));
+        String name = nametxt.getText();
+        String username = usernametxt.getText();
+        String password = passwordtxt.getText();
     }
 }
