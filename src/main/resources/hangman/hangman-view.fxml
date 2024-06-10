@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="hangman.HangmanController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hangman.HangmanController">
+   <children>
+      <Label layoutX="162.0" layoutY="72.0" prefHeight="103.0" prefWidth="276.0" text="Hangman" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="60.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginBtn" layoutX="162.0" layoutY="175.0" mnemonicParsing="false" onAction="#onLoginBtnClick" prefHeight="71.0" prefWidth="276.0" style="-fx-background-color: white;" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="signupBtn" layoutX="162.0" layoutY="269.0" mnemonicParsing="false" onAction="#onSignUpBtnClick" prefHeight="71.0" prefWidth="276.0" style="-fx-background-color: white;" text="SIGN-UP">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -11,8 +11,8 @@ public class HangmanApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HangmanApp.class.getResource("hangman-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hangman");
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setTitle(" HANGMAN");
         stage.setScene(scene);
         stage.show();
     }

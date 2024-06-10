@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hangman.MainMenuController">
+   <children>
+      <Button fx:id="startBtn" layoutX="327.0" layoutY="84.0" mnemonicParsing="false" onAction="#onStartBtnClick" prefHeight="51.0" prefWidth="199.0" text="start">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="previousGameBtn" layoutX="327.0" layoutY="175.0" mnemonicParsing="false" onAction="#onPreviousGameClick" text="previous game">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="leaderBoardBtn" layoutX="327.0" layoutY="269.0" mnemonicParsing="false" onAction="#onLeaderboardClick" prefHeight="51.0" prefWidth="199.0" text="leaderboard">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="343.0" fitWidth="239.0" layoutX="46.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@mainMenuHangman.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
