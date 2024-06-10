@@ -11,7 +11,17 @@ public class Game {
     private int time;
     private boolean win;
 
-
+    public Game() {
+        this.gameID = UUID.randomUUID();
+    }
+    public Game(String username, String word, int wrongGuesses, int time, boolean win) {
+        this.gameID = UUID.randomUUID();
+        this.username = username;
+        this.word = word;
+        this.wrongGuesses = wrongGuesses;
+        this.time = time;
+        this.win = win;
+    }
     public Game(UUID gameID, String username, String word, int wrongGuesses, int time, boolean win) {
         this.gameID = gameID;
         this.username = username;

@@ -5,6 +5,7 @@ public class Account {
     private String username;
     private String password;
     public Account() {
+
     }
     public Account(String name, String username, String password) {
         this.name = name;

@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.PublicKey;
 import java.util.Objects;
 
 public class signUpController {
@@ -29,6 +30,9 @@ public class signUpController {
     @FXML
     private TextField usernametxt;
     @FXML
+    public Label errorLabel;
+    DatabaseManager databaseManager;
+    @FXML
     protected void onBackBtnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load (getClass ().getResource ("hangman-view.fxml"));
         Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
@@ -36,11 +40,14 @@ public class signUpController {
     }
     @FXML
     void onSubmitBtnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass ().getResource ("mainMenu.fxml"));
-        Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
-        window.setScene (new Scene(parent, 600, 400));
         String name = nametxt.getText();
         String username = usernametxt.getText();
         String password = passwordtxt.getText();
+        Account account = new Account(name, username, password);
+        databaseManager.signUp(account);
+        Parent parent = FXMLLoader.load(getClass ().getResource ("mainMenu.fxml"));
+        Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
+        window.setScene (new Scene(parent, 600, 400));
+        GameController.user = account;
     }
 }

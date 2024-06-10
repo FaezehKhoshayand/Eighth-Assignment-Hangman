@@ -31,15 +31,20 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="backBtn" layoutX="269.0" layoutY="327.0" mnemonicParsing="false" onAction="#onBackBtnClick" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: white;" text="Back">
+      <Button fx:id="backBtn" layoutX="269.0" layoutY="309.0" mnemonicParsing="false" onAction="#onBackBtnClick" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: white;" text="Back">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="submitBtn" layoutX="374.0" layoutY="327.0" mnemonicParsing="false" onAction="#onSubmitBtnClick" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: white;" text="Submit">
+      <Button fx:id="submitBtn" layoutX="374.0" layoutY="309.0" mnemonicParsing="false" onAction="#onSubmitBtnClick" prefHeight="36.0" prefWidth="84.0" style="-fx-background-color: white;" text="Submit">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
+      <Label fx:id="errorLabel" layoutX="262.0" layoutY="360.0" prefHeight="19.0" prefWidth="204.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

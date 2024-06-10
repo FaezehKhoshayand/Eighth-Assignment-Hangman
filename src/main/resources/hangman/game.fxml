@@ -41,6 +41,7 @@
             <Image url="@6.jpg" />
          </image>
       </ImageView>
-      <HBox fx:id="loseWin" layoutX="388.0" layoutY="119.0" prefHeight="50.0" prefWidth="100.0" />
+      <HBox fx:id="back" layoutX="479.0" layoutY="119.0" prefHeight="50.0" prefWidth="107.0" />
+      <HBox fx:id="loseWin" layoutX="350.0" layoutY="119.0" prefHeight="50.0" prefWidth="107.0" />
    </children>
 </AnchorPane>
