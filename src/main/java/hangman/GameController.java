@@ -55,7 +55,7 @@ public class GameController implements Initializable {
     Game game;
     Timer time;
     //Image image2 = new Image (Objects.requireNonNull (getClass ().getResourceAsStream ("mainMenuHangman.png")));
-    String word = "QWERT";
+    String word = "TURKEY";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         game = new Game();

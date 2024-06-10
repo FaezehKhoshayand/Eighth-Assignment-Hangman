@@ -68,7 +68,6 @@ public class DatabaseManager {
         return null;
     }
 
-
     public static void createGameInfo(Game game) {
         Connection c;
         PreparedStatement stmt;
