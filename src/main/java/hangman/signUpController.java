@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,8 +30,6 @@ public class signUpController {
 
     @FXML
     private TextField usernametxt;
-    @FXML
-    public Label errorLabel;
     DatabaseManager databaseManager;
     @FXML
     protected void onBackBtnClick(ActionEvent event) throws IOException {
@@ -48,6 +47,6 @@ public class signUpController {
         Parent parent = FXMLLoader.load(getClass ().getResource ("mainMenu.fxml"));
         Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
         window.setScene (new Scene(parent, 600, 400));
-        GameController.user = account;
+        GameController.user = username;
     }
 }

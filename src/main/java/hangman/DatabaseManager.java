@@ -1,6 +1,7 @@
 package hangman;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.UUID;
 
 // Use JDBC to connect to your database and run queries
@@ -66,32 +67,59 @@ public class DatabaseManager {
         }
         return null;
     }
-    public static boolean usernameExists(String username) {
+
+
+    public static void createGameInfo(Game game) {
         Connection c;
-        Statement stmt;
+        PreparedStatement stmt;
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager.getConnection(jdbcUrl, Username, Password);
             c.setAutoCommit(false);
-            System.out.println("Opened database successfully (selectUserInfos)");
-
-            stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM UserInfo;");
-            while (rs.next()) {
-                if(username.equals(rs.getString("Username"))) {
-                    return true;
-                }
-            }
-            rs.close();
+            stmt = c.prepareStatement("INSERT INTO public.gameinfo(\"GameID\", \"Username\", \"Word\", \"WrongGuesses\", \"Time\",\"Win\") VALUES (?, ?, ?, ?, ?, ?);");
+            stmt.setObject(1, game.getGameID());
+            stmt.setString(2, game.getUsername());
+            stmt.setString(3, game.getWord());
+            stmt.setInt(4, game.getWrongGuesses());
+            stmt.setInt(5, game.getTime());
+            stmt.setBoolean(6, game.isWin());
+            stmt.executeUpdate();
+            c.commit();
             stmt.close();
             c.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Operation done successfully (selectUserInfos)");
-        return false;
+    }
+    public static ArrayList<String> selectLeaderBoard() {
+        Connection c;
+        Statement stmt;
+        ArrayList<String> leaderBoards = new ArrayList<>();
+        try {
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager.getConnection(jdbcUrl, Username, Password);
+            c.setAutoCommit(false);
+            System.out.println("Opened database successfully (selectLeaderboard)");
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM GameInfo");
+            while (rs.next()) {
+//                leaderBoard.setUsername(rs.getString("Username"));
+//                leaderBoard.setWord(rs.getString("Word"));
+//                leaderBoard.setWord(rs.getString("Win"));
+//                leaderBoard.setTime(Integer.parseInt(rs.getString("Time")));
+                leaderBoards.add(rs.getString("Username"));
+            }
+            rs.close();
+            stmt.close();
+            c.close();
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+        System.out.println("Operation done successfully (selectLeaderboard)");
+        return leaderBoards;
     }
     public static void main(String[] args) throws SQLException {
-
+        //System.out.println(selectLeaderBoard().get(1).getUsername());
     }
 }

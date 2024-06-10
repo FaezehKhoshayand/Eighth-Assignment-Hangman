@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,6 +46,7 @@ public class loginController {
         String username = usernametxt.getText();
         String password = passwordtxt.getText();
         Account account = DatabaseManager.findUser(username, password);
+        GameController.user = username;
         if(account != null) {
             if (account.getUsername() != null) {
                 if(Objects.equals(account.getUsername(), username) && Objects.equals(account.getPassword(), password)) {
@@ -53,23 +55,15 @@ public class loginController {
                     window.setScene (new Scene(parent, 600, 400));
                 }
                 else {
+//                    Label errorLabel = new Label();
 //                    errorLabel.setText("The username is not found");
+//                    errorLabel.setPrefSize(100, 35);
 //                    errorLabel.setStyle("-fx-background-color: black; -fx-border-color: red; -fx-border-width: 2px; -fx-text-fill: red; -fx-font-weight: bold; -fx-alignment: center;");
-//                    errorLabel.setVisible(true);
+//                    error.getChildren().add(errorLabel);
                 }
             }
         }
 
     }
-//    public Account login(String username) {
-//        Account account = getUser(username);
-//        if (account != null) {
-//            return account;
-//        }
-//        return null;
-//    }
-//    public Account getUser(String username) {
-//        return databaseManager.selectUserInfo(username);
-//    }
 
 }

@@ -25,6 +25,7 @@ public class HangmanController {
 
     @FXML
     private Button signupBtn;
+    public static Account user;
     @FXML
     protected void onLoginBtnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load (getClass ().getResource ("login-view.fxml"));

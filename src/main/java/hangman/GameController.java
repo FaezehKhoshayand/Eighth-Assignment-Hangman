@@ -1,5 +1,6 @@
 package hangman;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,14 +16,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.EventObject;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Timer;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameController implements Initializable {
-    public static Account user;
+    public DatabaseManager databaseManager;
+    public static String user;
     @FXML
     FlowPane alphabetBox;
     @FXML
@@ -56,12 +55,20 @@ public class GameController implements Initializable {
     Game game;
     Timer time;
     //Image image2 = new Image (Objects.requireNonNull (getClass ().getResourceAsStream ("mainMenuHangman.png")));
-    String word = "AAAMN";
+    String word = "QWERT";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        user = new Account();
         game = new Game();
         time = new Timer();
+        time = new Timer();
+        time.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    game.setTime(game.getTime() + 1);
+                });
+            }
+        }, 1000, 1000);
         displayWord();
         displayAlphabet();
     }
@@ -155,10 +162,13 @@ public class GameController implements Initializable {
         lose.setPrefSize(100, 35);
         lose.setStyle("-fx-background-color: white; -fx-border-color: white; -fx-border-width: 2px; -fx-text-fill: black; -fx-font-weight: bold; -fx-alignment: center;");
         loseWin.getChildren().add(lose);
+        game.setUsername(user);
         game.setWin(true);
-        game.setUsername(user.getUsername());
+        game.setUsername(user);
         game.setWord(word);
+        DatabaseManager.createGameInfo(game);
     }
+
 
     public void lose() {
         time.cancel();
@@ -167,8 +177,10 @@ public class GameController implements Initializable {
         lose.setPrefSize(100, 35);
         lose.setStyle("-fx-background-color: white; -fx-border-color: white; -fx-border-width: 2px; -fx-text-fill: black; -fx-font-weight: bold; -fx-alignment: center;");
         loseWin.getChildren().add(lose);
+        game.setUsername(user);
         game.setWin(false);
-        game.setUsername(user.getUsername());
+        game.setUsername(user);
         game.setWord(word);
+        DatabaseManager.createGameInfo(game);
     }
 }

@@ -30,8 +30,10 @@ public class MainMenuController {
         window.setScene (new Scene(parent, 600, 400));
     }
     @FXML
-    void onLeaderboardClick(ActionEvent event) {
-
+    void onLeaderboardClick(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass ().getResource ("leaderboard.fxml"));
+        Stage window = (Stage) ((Node) event.getSource ()).getScene ().getWindow ();
+        window.setScene (new Scene(parent, 600, 400));
     }
 
     @FXML
